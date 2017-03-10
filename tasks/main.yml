@@ -1,0 +1,10 @@
+---
+# tasks file for apigee-opdk-cassandra-shutdown
+- name: Disable gossip, effectively mark the node down
+  shell: "{{ nodetool }} disablegossip"
+
+- name: Disable thrift server
+  shell: "{{ nodetool }} disablethrift"
+
+- name: Drain the node to disk
+  shell: "{{ nodetool }} drain"
